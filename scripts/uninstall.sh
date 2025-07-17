@@ -232,8 +232,64 @@ fi
 
 # Clean up shells
 print_info "Cleaning up shell configurations..."
+
+# Restore original .zshrc if backup exists
+if [[ -f "$HOME/.zshrc" ]]; then
+    # Find the most recent backup
+    latest_backup=$(ls -t "$HOME"/.zshrc.backup.* 2>/dev/null | head -1)
+    
+    if [[ -n "$latest_backup" ]]; then
+        if confirm_action "Restore original .zshrc from backup ($latest_backup)?"; then
+            cp "$latest_backup" "$HOME/.zshrc"
+            print_success "Restored original .zshrc from backup"
+            
+            # Clean up backup files
+            if confirm_action "Remove .zshrc backup files?"; then
+                rm -f "$HOME"/.zshrc.backup.*
+                print_success "Removed .zshrc backup files"
+            fi
+        else
+            # Manual cleanup if user doesn't want to restore backup
+            if grep -q "# YouTube Channel Setup - ZSH" "$HOME/.zshrc"; then
+                print_info "Removing YouTube ZSH setup from .zshrc"
+                sed -i.bak '/# YouTube Channel Setup - ZSH/,/^$/d' "$HOME/.zshrc"
+                print_success "Removed YouTube ZSH configuration from .zshrc"
+            fi
+        fi
+    else
+        # No backup found, manual cleanup
+        if grep -q "# YouTube Channel Setup - ZSH" "$HOME/.zshrc"; then
+            print_info "Removing YouTube ZSH setup from .zshrc"
+            sed -i.bak '/# YouTube Channel Setup - ZSH/,/^$/d' "$HOME/.zshrc"
+            print_success "Removed YouTube ZSH configuration from .zshrc"
+        fi
+    fi
+fi
+
+# Remove YouTube ZSH and related config files
+config_files=(
+    "$HOME/.config/youtube-zsh-config.zsh"
+    "$HOME/.config/starship.toml"
+    "$HOME/.config/atuin/config.toml"
+)
+
+for config_file in "${config_files[@]}"; do
+    if [[ -f "$config_file" ]]; then
+        if confirm_action "Remove $(basename "$config_file") configuration?"; then
+            rm -f "$config_file"
+            print_success "Removed $(basename "$config_file") configuration"
+        fi
+    fi
+done
+
+# Remove empty atuin config directory
+if [[ -d "$HOME/.config/atuin" ]] && [[ -z "$(ls -A "$HOME/.config/atuin")" ]]; then
+    rm -rf "$HOME/.config/atuin"
+    print_success "Removed empty atuin configuration directory"
+fi
+
+# Clean up other shell configurations
 shell_configs=(
-    "$HOME/.zshrc"
     "$HOME/.bashrc"
     "$HOME/.bash_profile"
 )

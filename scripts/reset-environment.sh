@@ -22,7 +22,7 @@ print_success() {
 echo "YouTube Channel Environment Reset"
 echo "================================="
 echo ""
-print_warning "This will reset VS Code settings and clear YouTube project directories."
+print_warning "This will reset VS Code settings and browser profiles."
 read -p "Continue? (y/N): " -n 1 -r
 echo ""
 
@@ -38,21 +38,10 @@ if [ -f "$HOME/Library/Application Support/Code/User/settings.json" ]; then
     print_success "Backed up VS Code settings"
 fi
 
-# Clear YouTube directories (but keep structure)
-dirs=(
-    "$HOME/Documents/YouTube/Scripts"
-    "$HOME/Documents/YouTube/Recordings"
-    "$HOME/Documents/YouTube/Thumbnails"
-    "$HOME/Documents/YouTube/Projects"
-)
-
-for dir in "${dirs[@]}"; do
-    if [ -d "$dir" ]; then
-        print_warning "Clearing $dir..."
-        find "$dir" -type f -name "*.tmp" -delete
-        find "$dir" -type f -name ".DS_Store" -delete
-    fi
-done
+# Clear temporary files from common directories
+print_info "Clearing temporary files..."
+find ~ -name "*.tmp" -type f -delete 2>/dev/null || true
+find ~ -name ".DS_Store" -type f -delete 2>/dev/null || true
 
 # Reset Git config to standard
 print_warning "Reset Git configuration to defaults? (y/N): "

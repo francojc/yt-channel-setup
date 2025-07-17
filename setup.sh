@@ -71,9 +71,8 @@ fi
 
 # Create necessary directories
 print_header "Setting Up Directory Structure"
-mkdir -p ~/Documents/YouTube/{Scripts,Recordings,Thumbnails,Projects}
 mkdir -p ~/.config/{obs-studio,vscode}
-print_success "Created YouTube working directories"
+print_success "Created configuration directories"
 
 # Configure Git (if not already configured)
 if ! git config --global user.name &> /dev/null; then
@@ -86,25 +85,48 @@ if ! git config --global user.name &> /dev/null; then
     print_success "Git configured"
 fi
 
-# Install Python packages for AI/ML demos
-print_header "Python Environment Setup"
-if command -v uv &> /dev/null; then
-    print_info "Creating Python environment for AI demos..."
-    cd ~/Documents/YouTube/Projects
-    uv init youtube-ai
-    cd youtube-ai
-    uv add jupyter numpy pandas matplotlib openai
-    print_success "Python environment created with uv"
-else
-    print_info "uv not found. Please restart your terminal and run this script again."
+# Configure ZSH enhancements
+print_header "ZSH Configuration"
+if [[ -f ~/.zshrc ]]; then
+    print_info "Backing up existing .zshrc..."
+    cp ~/.zshrc ~/.zshrc.backup.$(date +%Y%m%d_%H%M%S)
+    print_success "Backup created"
 fi
 
-# Install commonly used Ollama models
-print_header "AI Model Setup"
-print_info "Pulling common Ollama models..."
-ollama pull llama2
-ollama pull mistral
-print_success "AI models downloaded"
+print_info "Adding YouTube channel ZSH configuration..."
+if ! grep -q "# YouTube Channel Setup - ZSH" ~/.zshrc 2>/dev/null; then
+    cat >> ~/.zshrc << 'EOF'
+
+# YouTube Channel Setup - ZSH Configuration
+if [[ -f "$HOME/.config/youtube-zsh-config.zsh" ]]; then
+    source "$HOME/.config/youtube-zsh-config.zsh"
+fi
+EOF
+    print_success "ZSH configuration added to .zshrc"
+else
+    print_info "ZSH configuration already present in .zshrc"
+fi
+
+# Copy ZSH config to user's config directory
+if [[ -f "settings/youtube-zsh-config.zsh" ]]; then
+    cp settings/youtube-zsh-config.zsh ~/.config/youtube-zsh-config.zsh
+    print_success "ZSH configuration copied to ~/.config/"
+fi
+
+# Copy Starship configuration
+if [[ -f "settings/starship.toml" ]]; then
+    cp settings/starship.toml ~/.config/starship.toml
+    print_success "Starship configuration copied to ~/.config/"
+fi
+
+# Copy Atuin configuration
+if [[ -f "settings/atuin-config.toml" ]]; then
+    mkdir -p ~/.config/atuin
+    cp settings/atuin-config.toml ~/.config/atuin/config.toml
+    print_success "Atuin configuration copied to ~/.config/atuin/"
+fi
+
+
 
 # Copy configuration files
 print_header "Applying Configurations"
@@ -127,9 +149,17 @@ fi
 # Final setup instructions
 print_header "Setup Complete!"
 echo "Next steps:"
-echo "1. Open OBS Studio and import the scene collection"
-echo "2. Configure audio routing in Loopback"
-echo "3. Test screen recording with OBS"
-echo "4. Set up Camo with your iPhone (if using)"
+echo "1. Restart your terminal or run 'source ~/.zshrc' to activate ZSH enhancements"
+echo "2. Open OBS Studio and configure your scenes"
+echo "3. Configure audio routing in Loopback"
+echo "4. Test screen recording with OBS"
+echo "5. Set up Camo with your iPhone (if using)"
+echo ""
+echo "ZSH enhancements installed:"
+echo "• Starship - Modern prompt with git status and language info"
+echo "• Atuin - Better history search with fuzzy matching"
+echo "• Syntax highlighting - Commands highlighted as you type"
+echo "• Autosuggestions - Suggestions based on history"
+echo "• Modern aliases - exa for ls, bat for cat, etc."
 echo ""
 echo "Run './scripts/verify-setup.sh' to check your environment"
