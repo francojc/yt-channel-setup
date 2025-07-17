@@ -115,10 +115,6 @@ show_exit = false
 ## enable or disable showing the command duration when listing history
 show_duration = true
 
-## defaults to false
-## enable or disable showing the command exit code when listing history
-show_exit = false
-
 ## Defaults to false
 ## This matches history against a set of default regex, and will not save these
 ## to history. Defaults to true.
