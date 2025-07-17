@@ -28,7 +28,8 @@ cask "lm-studio"  # GUI for local LLMs
 cask "miniconda"  # Minimal installer for conda
 
 # Browsers & Productivity
-cask "chromium"
+cask "ungoogled-chromium"
+cask "zen"
 cask "obsidian"
 cask "betterdisplay"
 cask "bitwarden"  # Password manager
