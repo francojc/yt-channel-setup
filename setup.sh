@@ -139,6 +139,7 @@ if [ -d "settings" ]; then
 
     # VS Code settings
     if [ -f "settings/vscode-settings.json" ]; then
+        mkdir -p ~/Library/Application\ Support/Code/User
         cp settings/vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
         print_success "VS Code settings applied"
     fi
