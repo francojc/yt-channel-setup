@@ -18,6 +18,7 @@ brew "atuin"
 brew "fzf"
 brew "zoxide"
 brew "yazi"
+brew "dockutil"
 
 # Video Production Essentials
 cask "obs"

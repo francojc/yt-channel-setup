@@ -132,6 +132,74 @@ if [[ -f "settings/atuin-config.toml" ]]; then
     print_success "Atuin configuration copied to ~/.config/atuin/"
 fi
 
+# Configure Dock
+print_header "Dock Configuration"
+print_info "Setting up optimized dock layout for YouTube content creation..."
+
+# Check if dockutil is available
+if command -v dockutil &> /dev/null; then
+    # Remove all existing dock items to start fresh
+    print_info "Clearing existing dock items..."
+    dockutil --remove all --no-restart
+    
+    # Add applications in logical order
+    print_info "Adding content creation applications..."
+    dockutil --add /Applications/OBS.app --no-restart
+    dockutil --add /Applications/Audacity.app --no-restart
+    dockutil --add /Applications/HandBrake.app --no-restart
+    
+    # Add spacer
+    dockutil --add '' --type spacer --section apps --no-restart
+    
+    print_info "Adding development tools..."
+    dockutil --add /Applications/Visual\ Studio\ Code.app --no-restart
+    dockutil --add /Applications/Ghostty.app --no-restart
+    dockutil --add /Applications/GitHub\ Desktop.app --no-restart
+    
+    # Add spacer
+    dockutil --add '' --type spacer --section apps --no-restart
+    
+    print_info "Adding productivity applications..."
+    dockutil --add /Applications/Obsidian.app --no-restart
+    dockutil --add /Applications/Rectangle.app --no-restart
+    dockutil --add /Applications/Bitwarden.app --no-restart
+    
+    # Add spacer
+    dockutil --add '' --type spacer --section apps --no-restart
+    
+    print_info "Adding browsers..."
+    dockutil --add /Applications/Chromium.app --no-restart
+    dockutil --add /Applications/Zen.app --no-restart
+    
+    # Add spacer
+    dockutil --add '' --type spacer --section apps --no-restart
+    
+    print_info "Adding AI tools..."
+    dockutil --add /Applications/Ollama.app --no-restart
+    dockutil --add /Applications/LM\ Studio.app --no-restart
+    
+    # Add common folders
+    print_info "Adding useful folders..."
+    dockutil --add ~/Downloads --view grid --display folder --no-restart
+    dockutil --add ~/Documents --view grid --display folder --no-restart
+    dockutil --add /Applications --view grid --display folder --no-restart
+    
+    # Configure dock settings
+    print_info "Configuring dock settings..."
+    defaults write com.apple.dock tilesize -int 48
+    defaults write com.apple.dock magnification -bool true
+    defaults write com.apple.dock largesize -int 64
+    defaults write com.apple.dock orientation -string "bottom"
+    defaults write com.apple.dock autohide -bool false
+    
+    # Restart dock to apply all changes
+    killall Dock
+    
+    print_success "Dock configuration completed"
+else
+    print_error "dockutil not found - dock configuration skipped"
+fi
+
 # Copy configuration files
 print_header "Applying Configurations"
 if [ -d "settings" ]; then
@@ -169,5 +237,11 @@ echo "• Yazi - Terminal file manager with 'y' command"
 echo "• Syntax highlighting - Commands highlighted as you type"
 echo "• Autosuggestions - Suggestions based on history"
 echo "• Modern aliases - eza for ls, bat for cat, etc."
+echo ""
+echo "Dock configuration:"
+echo "• Organized layout optimized for YouTube content creation"
+echo "• Grouped by function: Content Creation, Development, Productivity, Browsers, AI Tools"
+echo "• Includes useful folders: Downloads, Documents, Applications"
+echo "• Run './scripts/reset-dock.sh' to reset dock layout anytime"
 echo ""
 echo "Run './scripts/verify-setup.sh' to check your environment"

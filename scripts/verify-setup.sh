@@ -101,6 +101,7 @@ check_command zoxide
 check_command yazi
 check_command starship
 check_command atuin
+check_command dockutil
 
 # Check ZSH configuration
 print_header "ZSH Configuration"

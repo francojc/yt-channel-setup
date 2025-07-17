@@ -230,6 +230,54 @@ else
     print_info "Project directory kept"
 fi
 
+# Reset dock to default
+print_info "Resetting dock to default macOS layout..."
+if command -v dockutil &> /dev/null; then
+    if confirm_action "Reset dock to default macOS layout?"; then
+        # Remove all existing dock items
+        dockutil --remove all --no-restart
+        
+        # Add default macOS applications
+        dockutil --add /System/Applications/Finder.app --no-restart
+        dockutil --add /System/Applications/Launchpad.app --no-restart
+        dockutil --add /System/Applications/Safari.app --no-restart
+        dockutil --add /System/Applications/Mail.app --no-restart
+        dockutil --add /System/Applications/Maps.app --no-restart
+        dockutil --add /System/Applications/Photos.app --no-restart
+        dockutil --add /System/Applications/FaceTime.app --no-restart
+        dockutil --add /System/Applications/Calendar.app --no-restart
+        dockutil --add /System/Applications/Contacts.app --no-restart
+        dockutil --add /System/Applications/Reminders.app --no-restart
+        dockutil --add /System/Applications/Notes.app --no-restart
+        dockutil --add /System/Applications/Freeform.app --no-restart
+        dockutil --add /System/Applications/TV.app --no-restart
+        dockutil --add /System/Applications/Music.app --no-restart
+        dockutil --add /System/Applications/Podcasts.app --no-restart
+        dockutil --add /System/Applications/News.app --no-restart
+        dockutil --add /System/Applications/App\ Store.app --no-restart
+        dockutil --add /System/Applications/System\ Preferences.app --no-restart
+        
+        # Add Downloads folder
+        dockutil --add ~/Downloads --view grid --display folder --no-restart
+        
+        # Reset dock settings to defaults
+        defaults write com.apple.dock tilesize -int 48
+        defaults write com.apple.dock magnification -bool false
+        defaults write com.apple.dock largesize -int 128
+        defaults write com.apple.dock orientation -string "bottom"
+        defaults write com.apple.dock autohide -bool false
+        
+        # Restart dock
+        killall Dock
+        
+        print_success "Dock reset to default macOS layout"
+    else
+        print_info "Dock reset skipped"
+    fi
+else
+    print_info "dockutil not found - dock reset skipped"
+fi
+
 # Clean up shells
 print_info "Cleaning up shell configurations..."
 
