@@ -44,9 +44,9 @@ print_header "Command Line Tools"
 check_command brew
 check_command git
 check_command python3
+check_command uv
 check_command node
 check_command ollama
-check_command conda
 
 # Check applications
 print_header "Applications"
@@ -68,10 +68,11 @@ check_app "BlackHole 2ch"
 
 # Check Python environment
 print_header "Python Environment"
-if conda env list | grep -q "youtube-ai"; then
-    echo -e "${GREEN}✓${NC} youtube-ai conda environment exists"
+if command -v uv &> /dev/null; then
+    echo -e "${GREEN}✓${NC} uv Python package manager is available"
+    echo -e "${YELLOW}ℹ${NC} Use 'uv venv' to create virtual environments as needed"
 else
-    echo -e "${RED}✗${NC} youtube-ai conda environment NOT found"
+    echo -e "${RED}✗${NC} uv Python package manager NOT found"
 fi
 
 # Check Ollama models
@@ -88,21 +89,34 @@ else
     echo -e "${YELLOW}!${NC} mistral model not downloaded"
 fi
 
-# Check directories
-print_header "Directory Structure"
-dirs=(
-    "$HOME/Documents/YouTube/Scripts"
-    "$HOME/Documents/YouTube/Recordings"
-    "$HOME/Documents/YouTube/Thumbnails"
-    "$HOME/Documents/YouTube/Projects"
-)
+# Check modern terminal tools
+print_header "Modern Terminal Tools"
+check_command eza
+check_command bat
+check_command fzf
+check_command zoxide
+check_command yazi
+check_command starship
+check_command atuin
 
-for dir in "${dirs[@]}"; do
-    if [ -d "$dir" ]; then
-        echo -e "${GREEN}✓${NC} $dir exists"
-    else
-        echo -e "${RED}✗${NC} $dir NOT found"
-    fi
-done
+# Check ZSH configuration
+print_header "ZSH Configuration"
+if [ -f "$HOME/.config/youtube-zsh-config.zsh" ]; then
+    echo -e "${GREEN}✓${NC} YouTube ZSH configuration exists"
+else
+    echo -e "${RED}✗${NC} YouTube ZSH configuration NOT found"
+fi
+
+if [ -f "$HOME/.config/starship.toml" ]; then
+    echo -e "${GREEN}✓${NC} Starship configuration exists"
+else
+    echo -e "${RED}✗${NC} Starship configuration NOT found"
+fi
+
+if [ -f "$HOME/.config/atuin/config.toml" ]; then
+    echo -e "${GREEN}✓${NC} Atuin configuration exists"
+else
+    echo -e "${RED}✗${NC} Atuin configuration NOT found"
+fi
 
 echo -e "\n${GREEN}Verification complete!${NC}"
