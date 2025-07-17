@@ -25,7 +25,7 @@ cask "github"  # GitHub Desktop
 # AI/ML Tools
 cask "ollama"
 cask "lm-studio"  # GUI for local LLMs
-brew "miniconda"
+cask "miniconda"  # Minimal installer for conda
 
 # Browsers & Productivity
 cask "chromium"
