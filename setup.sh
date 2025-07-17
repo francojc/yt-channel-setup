@@ -87,7 +87,13 @@ fi
 
 # Configure ZSH enhancements
 print_header "ZSH Configuration"
-if [[ -f ~/.zshrc ]]; then
+
+# Create .zshrc if it doesn't exist
+if [[ ! -f ~/.zshrc ]]; then
+    print_info "Creating .zshrc file..."
+    touch ~/.zshrc
+    print_success ".zshrc file created"
+else
     print_info "Backing up existing .zshrc..."
     cp ~/.zshrc ~/.zshrc.backup.$(date +%Y%m%d_%H%M%S)
     print_success "Backup created"
@@ -125,8 +131,6 @@ if [[ -f "settings/atuin-config.toml" ]]; then
     cp settings/atuin-config.toml ~/.config/atuin/config.toml
     print_success "Atuin configuration copied to ~/.config/atuin/"
 fi
-
-
 
 # Copy configuration files
 print_header "Applying Configurations"
