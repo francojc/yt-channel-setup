@@ -39,6 +39,7 @@ This setup creates a consistent, "vanilla" environment that represents what typi
 - **Audio Routing**: BlackHole, Loopback
 - **Development**: Visual Studio Code, Ghostty, Git
 - **AI/ML Tools**: Ollama, LM Studio, Miniconda, Python
+- **Security**: Bitwarden (desktop app and CLI)
 - **Utilities**: Rectangle, BetterDisplay, Obsidian
 - **Browsers**: Chromium
 
@@ -60,6 +61,11 @@ This setup creates a consistent, "vanilla" environment that represents what typi
 
 3. **Ollama Setup**
    - Pull commonly used models: `ollama pull llama2`
+
+4. **Bitwarden Setup**
+   - Create a Bitwarden account and verify your email
+   - Install the browser extension: Open Chromium → Chrome Web Store → Search "Bitwarden Password Manager" → Click "Add to Chrome"
+   - Log into the extension using your Bitwarden credentials
 
 ## Testing Checklist
 

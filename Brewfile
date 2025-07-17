@@ -35,6 +35,10 @@ brew "miniconda"
 cask "chromium"
 cask "obsidian"
 cask "betterdisplay"
+cask "bitwarden"  # Password manager
+
+# Security & Utilities
+brew "bitwarden-cli"  # Password manager CLI
 
 # Screen Recording Helpers
 cask "keycastr"  # Show keyboard shortcuts on screen
