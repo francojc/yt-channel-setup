@@ -63,10 +63,10 @@ print_info "Installing applications from Brewfile..."
 brew bundle --file=Brewfile
 
 print_info "Cleaning up packages not in Brewfile..."
-if brew bundle cleanup --file=Brewfile; then
+if brew bundle cleanup --file=Brewfile --force; then
     print_success "Package cleanup completed"
 else
-    print_info "Use 'brew bundle cleanup --file=Brewfile --force' to remove unlisted packages"
+    print_error "Package cleanup failed"
 fi
 
 # Create necessary directories
@@ -162,6 +162,9 @@ echo ""
 echo "ZSH enhancements installed:"
 echo "• Starship - Modern prompt with git status and language info"
 echo "• Atuin - Better history search with fuzzy matching"
+echo "• FZF - Fuzzy finder for files and commands"
+echo "• Zoxide - Smart directory jumping with 'z' command"
+echo "• Yazi - Terminal file manager with 'y' command"
 echo "• Syntax highlighting - Commands highlighted as you type"
 echo "• Autosuggestions - Suggestions based on history"
 echo "• Modern aliases - eza for ls, bat for cat, etc."

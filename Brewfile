@@ -15,6 +15,9 @@ brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "starship"
 brew "atuin"
+brew "fzf"
+brew "zoxide"
+brew "yazi"
 
 # Video Production Essentials
 cask "obs"

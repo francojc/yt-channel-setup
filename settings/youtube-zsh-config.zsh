@@ -18,6 +18,52 @@ if command -v atuin &> /dev/null; then
     eval "$(atuin init zsh)"
 fi
 
+# FZF fuzzy finder
+if command -v fzf &> /dev/null; then
+    eval "$(fzf --zsh)"
+    
+    # FZF configuration
+    export FZF_DEFAULT_OPTS="
+        --height 40%
+        --layout=reverse
+        --border
+        --preview 'bat --style=numbers --color=always --line-range :500 {}'
+        --preview-window=right:50%
+    "
+    
+    # Use fd for FZF if available
+    if command -v fd &> /dev/null; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+        export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+    fi
+fi
+
+# Zoxide for smart directory jumping
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init zsh)"
+    
+    # Zoxide aliases
+    alias cd="z"
+    alias cdi="zi"
+fi
+
+# Yazi terminal file manager
+if command -v yazi &> /dev/null; then
+    # Yazi wrapper function to change directory on exit
+    function yy() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+        yazi "$@" --cwd-file="$tmp"
+        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            cd -- "$cwd"
+        fi
+        rm -f -- "$tmp"
+    }
+    
+    # Yazi alias for quick access
+    alias y="yazi"
+fi
+
 # ZSH syntax highlighting (must be at the end)
 if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
     source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -29,7 +75,12 @@ if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]
 fi
 
 # Modern aliases
-if command -v exa &> /dev/null; then
+if command -v eza &> /dev/null; then
+    alias ls="eza"
+    alias ll="eza -l"
+    alias la="eza -la"
+    alias tree="eza --tree"
+elif command -v exa &> /dev/null; then
     alias ls="exa"
     alias ll="exa -l"
     alias la="exa -la"
