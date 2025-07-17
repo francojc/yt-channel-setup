@@ -12,19 +12,24 @@ This setup creates a consistent, "vanilla" environment that represents what typi
 
 ## Quick Start
 
-1. Clone this repository:
+1. Install Xcode developer tools (required for most installations):
+   ```bash
+   xcode-select --install
+   ```
+
+2. Clone this repository:
    ```bash
    git clone https://github.com/francojc/yt-channel-setup.git
    cd yt-channel-setup
    ```
 
-2. Run the setup script:
+3. Run the setup script:
    ```bash
    chmod +x setup.sh
    ./setup.sh
    ```
 
-3. Follow the interactive prompts to customize your installation.
+4. Follow the interactive prompts to customize your installation.
 
 ## What's Included
 
