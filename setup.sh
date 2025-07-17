@@ -43,7 +43,7 @@ print_info "Checking for Homebrew..."
 if ! command -v brew &> /dev/null; then
     print_info "Homebrew not found. Installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
+
     # Add Homebrew to PATH for Apple Silicon Macs
     if [[ -f "/opt/homebrew/bin/brew" ]]; then
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
@@ -132,13 +132,13 @@ fi
 print_header "Applying Configurations"
 if [ -d "settings" ]; then
     print_info "Copying configuration files..."
-    
+
     # VS Code settings
     if [ -f "settings/vscode-settings.json" ]; then
         cp settings/vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
         print_success "VS Code settings applied"
     fi
-    
+
     # OBS settings (if exists)
     if [ -f "settings/obs-scenes.json" ]; then
         cp settings/obs-scenes.json ~/Library/Application\ Support/obs-studio/
@@ -160,6 +160,6 @@ echo "• Starship - Modern prompt with git status and language info"
 echo "• Atuin - Better history search with fuzzy matching"
 echo "• Syntax highlighting - Commands highlighted as you type"
 echo "• Autosuggestions - Suggestions based on history"
-echo "• Modern aliases - exa for ls, bat for cat, etc."
+echo "• Modern aliases - eza for ls, bat for cat, etc."
 echo ""
 echo "Run './scripts/verify-setup.sh' to check your environment"
