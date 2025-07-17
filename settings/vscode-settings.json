@@ -1,0 +1,65 @@
+{
+  // VS Code Settings for YouTube Content Creation
+  // Standard configuration for academic users
+  
+  // Editor basics
+  "editor.fontSize": 14,
+  "editor.fontFamily": "SF Mono, Monaco, 'Courier New', monospace",
+  "editor.lineHeight": 1.6,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "on",
+  
+  // Theme and appearance
+  "workbench.colorTheme": "Default Light Modern",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.sideBar.location": "left",
+  "window.zoomLevel": 0,
+  
+  // Terminal
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  
+  // Python specific
+  "python.defaultInterpreterPath": "~/miniconda3/envs/youtube-ai/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  
+  // Formatting
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  
+  // File explorer
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": true,
+  
+  // Git
+  "git.enableSmartCommit": false,
+  "git.confirmSync": true,
+  
+  // Extensions to recommend
+  "extensions.ignoreRecommendations": false,
+  
+  // Disable telemetry for privacy
+  "telemetry.telemetryLevel": "off",
+  
+  // Simple, clean UI
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": true,
+  "breadcrumbs.enabled": true,
+  
+  // Auto-save off (better for tutorials)
+  "files.autoSave": "off",
+  
+  // Search
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/venv": true,
+    "**/__pycache__": true
+  }
+}
