@@ -68,3 +68,4 @@ personal-settings/
 # YouTube project files (usually too large)
 Recordings/
 Exports/
+.aider*
