@@ -57,10 +57,17 @@ fi
 print_info "Updating Homebrew..."
 brew update
 
-# Install from Brewfile
+# Install from Brewfile and cleanup old packages
 print_header "Installing Applications"
 print_info "Installing applications from Brewfile..."
 brew bundle --file=Brewfile
+
+print_info "Cleaning up packages not in Brewfile..."
+if brew bundle cleanup --file=Brewfile; then
+    print_success "Package cleanup completed"
+else
+    print_info "Use 'brew bundle cleanup --file=Brewfile --force' to remove unlisted packages"
+fi
 
 # Create necessary directories
 print_header "Setting Up Directory Structure"
@@ -81,14 +88,15 @@ fi
 
 # Install Python packages for AI/ML demos
 print_header "Python Environment Setup"
-if command -v conda &> /dev/null; then
-    print_info "Creating conda environment for AI demos..."
-    conda create -n youtube-ai python=3.11 -y
-    conda activate youtube-ai
-    pip install jupyter numpy pandas matplotlib openai
-    print_success "Python environment created"
+if command -v uv &> /dev/null; then
+    print_info "Creating Python environment for AI demos..."
+    cd ~/Documents/YouTube/Projects
+    uv init youtube-ai
+    cd youtube-ai
+    uv add jupyter numpy pandas matplotlib openai
+    print_success "Python environment created with uv"
 else
-    print_info "Conda not found. Please restart your terminal and run this script again."
+    print_info "uv not found. Please restart your terminal and run this script again."
 fi
 
 # Install commonly used Ollama models

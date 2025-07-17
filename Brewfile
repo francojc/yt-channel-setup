@@ -3,6 +3,7 @@
 # Core Development Tools
 brew "git"
 brew "python@3.11"
+brew "uv"
 brew "node"
 brew "wget"
 brew "curl"
@@ -25,7 +26,6 @@ cask "github"  # GitHub Desktop
 # AI/ML Tools
 cask "ollama"
 cask "lm-studio"  # GUI for local LLMs
-cask "miniconda"  # Minimal installer for conda
 
 # Browsers & Productivity
 cask "ungoogled-chromium"

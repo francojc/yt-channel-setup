@@ -66,15 +66,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     print_success "Git aliases removed"
 fi
 
-# Clear Chromium profile
-print_warning "Clear Chromium profile data? (y/N): "
+# Clear Ungoogled Chromium profile
+print_warning "Clear Ungoogled Chromium profile data? (y/N): "
 read -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     rm -rf "$HOME/Library/Application Support/Chromium/Default/Extensions"
     rm -rf "$HOME/Library/Application Support/Chromium/Default/History"
     rm -rf "$HOME/Library/Application Support/Chromium/Default/Cookies"
-    print_success "Chromium profile reset"
+    print_success "Ungoogled Chromium profile reset"
 fi
 
 echo ""
