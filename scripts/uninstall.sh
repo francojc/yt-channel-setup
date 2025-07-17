@@ -129,7 +129,7 @@ config_items=(
     "$HOME/Library/Application Support/BetterDisplay"
     "$HOME/Library/Application Support/Bitwarden"
     "$HOME/Library/Application Support/KeyCastr"
-    "$HOME/Library/Application Support/Camo"
+    "$HOME/Library/Application Support/Camo Studio"
     "$HOME/Library/Application Support/Ghostty"
     "$HOME/Library/Application Support/LM Studio"
     "$HOME/Library/Application Support/Rectangle"
@@ -178,7 +178,7 @@ app_aliases=(
     "BetterDisplay.app"
     "Bitwarden.app"
     "KeyCastr.app"
-    "Camo.app"
+    "Camo Studio.app"
 )
 
 print_info "Checking for application aliases in /Applications..."

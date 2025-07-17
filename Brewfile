@@ -38,4 +38,4 @@ brew "bitwarden-cli"  # Password manager CLI
 
 # Screen Recording Helpers
 cask "keycastr"  # Show keyboard shortcuts on screen
-cask "camo"  # Use iPhone as webcam
+cask "camo-studio"  # Use iPhone as webcam
