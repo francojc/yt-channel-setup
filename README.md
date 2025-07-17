@@ -88,6 +88,22 @@ To reset to clean state:
 ./scripts/reset-environment.sh
 ```
 
+## Complete Uninstall
+
+To completely remove all tools and configurations installed by this setup:
+
+```bash
+./scripts/uninstall.sh
+```
+
+**Warning**: This will remove ALL applications and configurations installed by this setup. The script includes:
+- Removal of all Homebrew packages from the Brewfile
+- Cleanup of configuration files and directories
+- Option to completely remove Homebrew itself
+- Safe prompts before each major action
+
+This is ideal for students who want to completely clean their systems after using the setup for coursework.
+
 ## Target Audience Profile
 
 This environment assumes:

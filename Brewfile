@@ -1,9 +1,5 @@
 # Brewfile for YouTube AI Education Content Creation
 
-# Taps
-tap "homebrew/bundle"
-tap "homebrew/cask"
-
 # Core Development Tools
 brew "git"
 brew "python@3.11"
