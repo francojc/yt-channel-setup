@@ -20,11 +20,6 @@ echo "📦 Installing essential extensions..."
 # Editor Enhancement
 code --install-extension vscodevim.vim
 
-# Python Development
-code --install-extension ms-python.python
-code --install-extension ms-python.vscode-pylance
-code --install-extension ms-toolsai.jupyter
-
 # AI/ML Related
 code --install-extension GitHub.copilot
 code --install-extension GitHub.copilot-chat
@@ -33,30 +28,9 @@ code --install-extension GitHub.copilot-chat
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension bierner.markdown-preview-github-styles
 
-# Git
-code --install-extension eamodio.gitlens
-code --install-extension mhutchie.git-graph
-
 # General Productivity
 code --install-extension esbenp.prettier-vscode
 code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension wayou.vscode-todo-highlight
-code --install-extension gruntfuggly.todo-tree
-code --install-extension ms-vscode.live-server
-code --install-extension formulahendry.auto-rename-tag
-
-# File Management
-code --install-extension sleistner.vscode-fileutils
-code --install-extension alexcvzz.vscode-sqlite
-
-# R Development (for academic users)
-code --install-extension REditorSupport.r
-code --install-extension quarto-dev.quarto
-
-# Code Quality & Linting
-code --install-extension ms-python.flake8
-code --install-extension charliermarsh.ruff
-code --install-extension bradlc.vscode-tailwindcss
 
 echo "🎨 Installing content creation extensions..."
 

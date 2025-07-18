@@ -51,6 +51,15 @@ fi
 # Yazi terminal file manager
 if command -v yazi &> /dev/null; then
     # Yazi wrapper function to change directory on exit
+    function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+        rm -f -- "$tmp"
+    }
+    
+    # Alternative yazi function (yy) for compatibility
     function yy() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
         yazi "$@" --cwd-file="$tmp"
@@ -59,9 +68,6 @@ if command -v yazi &> /dev/null; then
         fi
         rm -f -- "$tmp"
     }
-    
-    # Yazi alias for quick access
-    alias y="yazi"
 fi
 
 # ZSH syntax highlighting (must be at the end)

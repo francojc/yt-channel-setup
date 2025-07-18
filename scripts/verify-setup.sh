@@ -123,4 +123,4 @@ else
     echo -e "${RED}✗${NC} Atuin configuration NOT found"
 fi
 
-echo -e "\n${GREEN}Verification complete!${NC}"
+echo -e "\n${GREEN}Verification complete!${NC}"d
