@@ -132,6 +132,13 @@ if [[ -f "settings/atuin-config.toml" ]]; then
     print_success "Atuin configuration copied to ~/.config/atuin/"
 fi
 
+# Copy Ghostty configuration
+if [[ -f "settings/ghostty-config" ]]; then
+    mkdir -p ~/.config/ghostty
+    cp settings/ghostty-config ~/.config/ghostty/config
+    print_success "Ghostty configuration copied to ~/.config/ghostty/"
+fi
+
 # Configure Dock
 print_header "Dock Configuration"
 print_info "Setting up optimized dock layout for YouTube content creation..."
