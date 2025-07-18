@@ -219,14 +219,30 @@ if [ -d "settings" ]; then
     fi
 fi
 
+# Install VS Code extensions
+print_header "VS Code Extensions"
+if [ -f "scripts/install-vscode-extensions.sh" ]; then
+    print_info "Installing VS Code extensions..."
+    if command -v code &> /dev/null; then
+        ./scripts/install-vscode-extensions.sh
+        print_success "VS Code extensions installed"
+    else
+        print_error "VS Code CLI not available - extensions skipped"
+        print_info "Install VS Code CLI: VS Code → Command Palette → 'Shell Command: Install code command in PATH'"
+    fi
+else
+    print_error "Extension installation script not found"
+fi
+
 # Final setup instructions
 print_header "Setup Complete!"
 echo "Next steps:"
 echo "1. Restart your terminal or run 'source ~/.zshrc' to activate ZSH enhancements"
-echo "2. Open OBS Studio and configure your scenes"
-echo "3. Configure audio routing in Loopback"
-echo "4. Test screen recording with OBS"
-echo "5. Set up Camo with your iPhone (if using)"
+echo "2. Restart VS Code to activate all extensions and settings"
+echo "3. Open OBS Studio and configure your scenes"
+echo "4. Configure audio routing in Loopback"
+echo "5. Test screen recording with OBS"
+echo "6. Set up Camo with your iPhone (if using)"
 echo ""
 echo "ZSH enhancements installed:"
 echo "• Starship - Modern prompt with git status and language info"
