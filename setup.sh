@@ -234,15 +234,31 @@ else
     print_error "Extension installation script not found"
 fi
 
+# Setup OBS templates
+print_header "OBS Studio Templates"
+if [ -f "scripts/setup-obs-templates.sh" ]; then
+    print_info "Installing OBS templates for YouTube content creation..."
+    if [ -d "/Applications/OBS.app" ]; then
+        ./scripts/setup-obs-templates.sh
+        print_success "OBS templates installed"
+    else
+        print_error "OBS Studio not found - templates skipped"
+        print_info "OBS should have been installed via Homebrew. Check the installation."
+    fi
+else
+    print_error "OBS template setup script not found"
+fi
+
 # Final setup instructions
 print_header "Setup Complete!"
 echo "Next steps:"
 echo "1. Restart your terminal or run 'source ~/.zshrc' to activate ZSH enhancements"
 echo "2. Restart VS Code to activate all extensions and settings"
-echo "3. Open OBS Studio and configure your scenes"
-echo "4. Configure audio routing in Loopback"
-echo "5. Test screen recording with OBS"
-echo "6. Set up Camo with your iPhone (if using)"
+echo "3. Launch OBS Studio - templates should be automatically loaded"
+echo "4. Configure your devices in OBS (webcam and microphone)"
+echo "5. Test recording with the 'Screen + Webcam' scene"
+echo "6. Configure audio routing in Loopback (optional)"
+echo "7. Set up Camo with your iPhone (if using)"
 echo ""
 echo "ZSH enhancements installed:"
 echo "• Starship - Modern prompt with git status and language info"
@@ -259,5 +275,11 @@ echo "• Organized layout optimized for YouTube content creation"
 echo "• Grouped by function: Content Creation, Development, Productivity, Browsers, AI Tools"
 echo "• Includes useful folders: Downloads, Documents, Applications"
 echo "• Run './scripts/reset-dock.sh' to reset dock layout anytime"
+echo ""
+echo "OBS Studio templates:"
+echo "• 4 pre-configured scenes ready for immediate use"
+echo "• Optimized 1080p30 recording settings with hardware encoding"
+echo "• Professional layouts: Screen Recording, Webcam Only, Screen + Webcam, Starting Soon"
+echo "• Quick start guide: settings/obs/README.md"
 echo ""
 echo "Run './scripts/verify-setup.sh' to check your environment"

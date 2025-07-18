@@ -17,7 +17,7 @@
   "workbench.colorTheme": "Monokai",
   "workbench.iconTheme": "vs-seti",
   "workbench.sideBar.location": "left",
-  "window.zoomLevel": 1,
+  // "window.zoomLevel": 1,
 
   // Terminal
   "terminal.integrated.fontSize": 14,
