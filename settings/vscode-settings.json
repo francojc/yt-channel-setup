@@ -3,7 +3,7 @@
   // Standard configuration for academic users
 
   // Editor basics - YouTube optimized
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.fontFamily": "SF Mono, Monaco, 'Fira Code', 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.lineHeight": 1.6,
@@ -17,10 +17,9 @@
   "workbench.colorTheme": "Monokai",
   "workbench.iconTheme": "vs-seti",
   "workbench.sideBar.location": "left",
-  // "window.zoomLevel": 1,
 
   // Terminal
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 13,
   "terminal.integrated.defaultProfile.osx": "zsh",
 
   // Python specific

@@ -5,6 +5,7 @@ This directory contains pre-configured OBS templates designed for YouTube conten
 ## Quick Start
 
 ### Automatic Setup (Recommended)
+
 Run the setup script to automatically install templates:
 ```bash
 ./scripts/setup-obs-templates.sh
