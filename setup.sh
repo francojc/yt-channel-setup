@@ -184,16 +184,20 @@ if command -v dockutil &> /dev/null; then
     dockutil --add ~/Documents --view grid --display folder --no-restart
     dockutil --add /Applications --view grid --display folder --no-restart
     
-    # Configure dock settings
-    print_info "Configuring dock settings..."
+    # Configure dock and menu bar settings for YouTube recording
+    print_info "Configuring dock and menu bar settings..."
     defaults write com.apple.dock tilesize -int 48
     defaults write com.apple.dock magnification -bool true
     defaults write com.apple.dock largesize -int 64
     defaults write com.apple.dock orientation -string "bottom"
-    defaults write com.apple.dock autohide -bool false
+    defaults write com.apple.dock autohide -bool true
     
-    # Restart dock to apply all changes
+    # Auto-hide menu bar for cleaner recordings
+    defaults write NSGlobalDomain _HIHideMenuBar -bool true
+    
+    # Restart dock and menu bar to apply changes
     killall Dock
+    killall SystemUIServer
     
     print_success "Dock configuration completed"
 else
