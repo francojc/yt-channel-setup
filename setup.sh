@@ -23,7 +23,7 @@ print_info() {
 }
 
 print_success() {
-    echo -e "${GREEN}✓${NC} $1"
+    echo -e"${GREEN}✓${NC} $1"
 }
 
 print_error() {
@@ -148,40 +148,40 @@ if command -v dockutil &> /dev/null; then
     # Remove all existing dock items to start fresh
     print_info "Clearing existing dock items..."
     dockutil --remove all --no-restart
-    
+
     print_info "Adding development tools..."
     dockutil --add /Applications/Visual\ Studio\ Code.app --no-restart
     dockutil --add /Applications/Ghostty.app --no-restart
     dockutil --add /Applications/GitHub\ Desktop.app --no-restart
-    
+
     # Add spacer
     dockutil --add '' --type spacer --section apps --no-restart
-    
+
     print_info "Adding productivity applications..."
     dockutil --add /Applications/Obsidian.app --no-restart
     dockutil --add /Applications/Rectangle.app --no-restart
     dockutil --add /Applications/Bitwarden.app --no-restart
-    
+
     # Add spacer
     dockutil --add '' --type spacer --section apps --no-restart
-    
+
     print_info "Adding browsers..."
     dockutil --add /Applications/Chromium.app --no-restart
     dockutil --add /Applications/Zen.app --no-restart
-    
+
     # Add spacer
     dockutil --add '' --type spacer --section apps --no-restart
-    
+
     print_info "Adding AI tools..."
     dockutil --add /Applications/Ollama.app --no-restart
     dockutil --add /Applications/LM\ Studio.app --no-restart
-    
+
     # Add common folders
     print_info "Adding useful folders..."
     dockutil --add ~/Downloads --view grid --display folder --no-restart
     dockutil --add ~/Documents --view grid --display folder --no-restart
     dockutil --add /Applications --view grid --display folder --no-restart
-    
+
     # Configure dock and menu bar settings
     print_info "Configuring dock and menu bar settings..."
     defaults write com.apple.dock tilesize -int 48
@@ -189,14 +189,14 @@ if command -v dockutil &> /dev/null; then
     defaults write com.apple.dock largesize -int 64
     defaults write com.apple.dock orientation -string "bottom"
     defaults write com.apple.dock autohide -bool true
-    
+
     # Auto-hide menu bar for cleaner interface
     defaults write NSGlobalDomain _HIHideMenuBar -bool true
-    
+
     # Restart dock and menu bar to apply changes
     killall Dock
     killall SystemUIServer
-    
+
     print_success "Dock configuration completed"
 else
     print_error "dockutil not found - dock configuration skipped"
