@@ -1,0 +1,72 @@
+{
+  "name": "YouTube Beginner Scenes",
+  "description": "Pre-configured scenes for YouTube content creation",
+  "scenes": [
+    {
+      "name": "Screen Recording",
+      "description": "Full screen capture for tutorials and demonstrations",
+      "sources": [
+        {
+          "type": "Display Capture",
+          "name": "Screen Capture",
+          "settings": {
+            "capture_cursor": true,
+            "capture_window": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webcam Only", 
+      "description": "Solo webcam for talking head videos and introductions",
+      "sources": [
+        {
+          "type": "Video Capture Device",
+          "name": "Webcam",
+          "settings": {
+            "device": "default",
+            "resolution": "1920x1080",
+            "fps": 30
+          }
+        }
+      ]
+    },
+    {
+      "name": "Screen + Webcam",
+      "description": "Screen capture with webcam overlay in corner",
+      "sources": [
+        {
+          "type": "Display Capture", 
+          "name": "Screen Capture",
+          "settings": {
+            "capture_cursor": true
+          }
+        },
+        {
+          "type": "Video Capture Device",
+          "name": "Webcam Overlay",
+          "settings": {
+            "device": "default",
+            "resolution": "640x480",
+            "position": "bottom-right"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Starting Soon",
+      "description": "Pre-stream waiting screen with countdown",
+      "sources": [
+        {
+          "type": "Text",
+          "name": "Starting Soon Text",
+          "settings": {
+            "text": "Stream Starting Soon...",
+            "font_size": 72,
+            "color": "#FFFFFF"
+          }
+        }
+      ]
+    }
+  ]
+}

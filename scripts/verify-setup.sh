@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Verify YouTube Channel Setup
+# Verify Development Environment Setup
 # This script checks that all required tools are installed and accessible
 
 set -euo pipefail
@@ -36,8 +36,8 @@ check_app() {
 }
 
 # Start verification
-echo -e "${GREEN}YouTube Channel Environment Verification${NC}"
-echo "========================================"
+echo -e "${GREEN}Development Environment Verification${NC}"
+echo "====================================="
 
 # Check command line tools
 print_header "Command Line Tools"
@@ -50,12 +50,7 @@ check_command ollama
 
 # Check applications
 print_header "Applications"
-check_app "OBS"
-check_app "Audacity"
-check_app "HandBrake"
 check_app "Rectangle"
-check_app "BlackHole 2ch"
-check_app "Loopback"
 check_app "Visual Studio Code"
 check_app "Ghostty"
 check_app "GitHub Desktop"
@@ -66,8 +61,6 @@ check_app "Zen"
 check_app "Obsidian"
 check_app "BetterDisplay"
 check_app "Bitwarden"
-check_app "KeyCastr"
-check_app "Camo Studio"
 
 # Check Python environment
 print_header "Python Environment"
@@ -105,10 +98,10 @@ check_command dockutil
 
 # Check ZSH configuration
 print_header "ZSH Configuration"
-if [ -f "$HOME/.config/youtube-zsh-config.zsh" ]; then
-    echo -e "${GREEN}✓${NC} YouTube ZSH configuration exists"
+if [ -f "$HOME/.config/dev-zsh-config.zsh" ]; then
+    echo -e "${GREEN}✓${NC} Development ZSH configuration exists"
 else
-    echo -e "${RED}✗${NC} YouTube ZSH configuration NOT found"
+    echo -e "${RED}✗${NC} Development ZSH configuration NOT found"
 fi
 
 if [ -f "$HOME/.config/starship.toml" ]; then
@@ -123,4 +116,4 @@ else
     echo -e "${RED}✗${NC} Atuin configuration NOT found"
 fi
 
-echo -e "\n${GREEN}Verification complete!${NC}"d
+echo -e "\n${GREEN}Verification complete!${NC}"

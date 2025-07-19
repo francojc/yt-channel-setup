@@ -1,0 +1,24 @@
+# Brewfile for Video Production Tools (Reference Only)
+# This file contains video production tools that were removed from the main setup
+# Use this as reference for setting up video production on the host machine
+
+# Video Production Essentials
+cask "obs"                    # Open Broadcaster Software - screen recording and streaming
+cask "audacity"              # Audio editing and recording
+cask "handbrake"             # Video transcoding and compression
+cask "davinci-resolve"       # Professional video editing (if needed)
+
+# Audio Tools
+cask "blackhole-2ch"         # Virtual audio driver for audio routing
+cask "loopback"              # Advanced audio routing and mixing
+
+# Screen Recording Helpers
+cask "keycastr"              # Show keyboard shortcuts on screen during recording
+cask "camo-studio"           # Use iPhone as high-quality webcam
+
+# Additional Video Production Tools (Optional)
+# cask "final-cut-pro"       # Apple's professional video editor
+# cask "motion"              # Motion graphics and effects
+# cask "compressor"          # Video compression and encoding
+# cask "screenflow"          # Screen recording and editing
+# cask "camtasia"            # Screen recording and editing with annotations

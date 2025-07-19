@@ -14,7 +14,6 @@ $nodejs\
 $python\
 $rust\
 $golang\
-$php\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
 [](fg:#06969A bg:#33658A)\
@@ -68,11 +67,6 @@ style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
 [golang]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[php]
 symbol = ""
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'

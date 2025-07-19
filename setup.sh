@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# YouTube Channel Setup Script
-# This script sets up a standard macOS environment for YouTube content creation
+# Basic Development Environment Setup Script
+# This script sets up a standard macOS development environment
 
 set -euo pipefail
 
@@ -36,7 +36,7 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
     exit 1
 fi
 
-print_header "YouTube Channel Environment Setup"
+print_header "Basic Development Environment Setup"
 
 # Check for Homebrew
 print_info "Checking for Homebrew..."
@@ -71,7 +71,7 @@ fi
 
 # Create necessary directories
 print_header "Setting Up Directory Structure"
-mkdir -p ~/.config/{obs-studio,vscode}
+mkdir -p ~/.config/vscode
 print_success "Created configuration directories"
 
 # Configure Git (if not already configured)
@@ -99,13 +99,13 @@ else
     print_success "Backup created"
 fi
 
-print_info "Adding YouTube channel ZSH configuration..."
-if ! grep -q "# YouTube Channel Setup - ZSH" ~/.zshrc 2>/dev/null; then
+print_info "Adding development ZSH configuration..."
+if ! grep -q "# Development Environment Setup - ZSH" ~/.zshrc 2>/dev/null; then
     cat >> ~/.zshrc << 'EOF'
 
-# YouTube Channel Setup - ZSH Configuration
-if [[ -f "$HOME/.config/youtube-zsh-config.zsh" ]]; then
-    source "$HOME/.config/youtube-zsh-config.zsh"
+# Development Environment Setup - ZSH Configuration
+if [[ -f "$HOME/.config/dev-zsh-config.zsh" ]]; then
+    source "$HOME/.config/dev-zsh-config.zsh"
 fi
 EOF
     print_success "ZSH configuration added to .zshrc"
@@ -114,8 +114,8 @@ else
 fi
 
 # Copy ZSH config to user's config directory
-if [[ -f "settings/youtube-zsh-config.zsh" ]]; then
-    cp settings/youtube-zsh-config.zsh ~/.config/youtube-zsh-config.zsh
+if [[ -f "settings/dev-zsh-config.zsh" ]]; then
+    cp settings/dev-zsh-config.zsh ~/.config/dev-zsh-config.zsh
     print_success "ZSH configuration copied to ~/.config/"
 fi
 
@@ -141,22 +141,13 @@ fi
 
 # Configure Dock
 print_header "Dock Configuration"
-print_info "Setting up optimized dock layout for YouTube content creation..."
+print_info "Setting up optimized dock layout for development..."
 
 # Check if dockutil is available
 if command -v dockutil &> /dev/null; then
     # Remove all existing dock items to start fresh
     print_info "Clearing existing dock items..."
     dockutil --remove all --no-restart
-    
-    # Add applications in logical order
-    print_info "Adding content creation applications..."
-    dockutil --add /Applications/OBS.app --no-restart
-    dockutil --add /Applications/Audacity.app --no-restart
-    dockutil --add /Applications/HandBrake.app --no-restart
-    
-    # Add spacer
-    dockutil --add '' --type spacer --section apps --no-restart
     
     print_info "Adding development tools..."
     dockutil --add /Applications/Visual\ Studio\ Code.app --no-restart
@@ -191,7 +182,7 @@ if command -v dockutil &> /dev/null; then
     dockutil --add ~/Documents --view grid --display folder --no-restart
     dockutil --add /Applications --view grid --display folder --no-restart
     
-    # Configure dock and menu bar settings for YouTube recording
+    # Configure dock and menu bar settings
     print_info "Configuring dock and menu bar settings..."
     defaults write com.apple.dock tilesize -int 48
     defaults write com.apple.dock magnification -bool true
@@ -199,7 +190,7 @@ if command -v dockutil &> /dev/null; then
     defaults write com.apple.dock orientation -string "bottom"
     defaults write com.apple.dock autohide -bool true
     
-    # Auto-hide menu bar for cleaner recordings
+    # Auto-hide menu bar for cleaner interface
     defaults write NSGlobalDomain _HIHideMenuBar -bool true
     
     # Restart dock and menu bar to apply changes
@@ -223,11 +214,6 @@ if [ -d "settings" ]; then
         print_success "VS Code settings applied"
     fi
 
-    # OBS settings (if exists)
-    if [ -f "settings/obs-scenes.json" ]; then
-        cp settings/obs-scenes.json ~/Library/Application\ Support/obs-studio/
-        print_success "OBS scene collection copied"
-    fi
 fi
 
 # Install VS Code extensions
@@ -245,31 +231,14 @@ else
     print_error "Extension installation script not found"
 fi
 
-# Setup OBS templates
-print_header "OBS Studio Templates"
-if [ -f "scripts/setup-obs-templates.sh" ]; then
-    print_info "Installing OBS templates for YouTube content creation..."
-    if [ -d "/Applications/OBS.app" ]; then
-        ./scripts/setup-obs-templates.sh
-        print_success "OBS templates installed"
-    else
-        print_error "OBS Studio not found - templates skipped"
-        print_info "OBS should have been installed via Homebrew. Check the installation."
-    fi
-else
-    print_error "OBS template setup script not found"
-fi
 
 # Final setup instructions
 print_header "Setup Complete!"
 echo "Next steps:"
 echo "1. Restart your terminal or run 'source ~/.zshrc' to activate ZSH enhancements"
 echo "2. Restart VS Code to activate all extensions and settings"
-echo "3. Launch OBS Studio - templates should be automatically loaded"
-echo "4. Configure your devices in OBS (webcam and microphone)"
-echo "5. Test recording with the 'Screen + Webcam' scene"
-echo "6. Configure audio routing in Loopback (optional)"
-echo "7. Set up Camo with your iPhone (if using)"
+echo "3. Set up Ollama models: 'ollama pull llama2'"
+echo "4. Configure LM Studio with your preferred models"
 echo ""
 echo "ZSH enhancements installed:"
 echo "• Starship - Modern prompt with git status and language info"
@@ -282,15 +251,9 @@ echo "• Autosuggestions - Suggestions based on history"
 echo "• Modern aliases - eza for ls, bat for cat, etc."
 echo ""
 echo "Dock configuration:"
-echo "• Organized layout optimized for YouTube content creation"
-echo "• Grouped by function: Content Creation, Development, Productivity, Browsers, AI Tools"
+echo "• Organized layout optimized for development work"
+echo "• Grouped by function: Development, Productivity, Browsers, AI Tools"
 echo "• Includes useful folders: Downloads, Documents, Applications"
 echo "• Run './scripts/reset-dock.sh' to reset dock layout anytime"
-echo ""
-echo "OBS Studio templates:"
-echo "• 4 pre-configured scenes ready for immediate use"
-echo "• Optimized 1080p30 recording settings with hardware encoding"
-echo "• Professional layouts: Screen Recording, Webcam Only, Screen + Webcam, Starting Soon"
-echo "• Quick start guide: settings/obs/README.md"
 echo ""
 echo "Run './scripts/verify-setup.sh' to check your environment"

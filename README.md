@@ -1,13 +1,13 @@
-# YouTube Channel Setup Environment
+# Basic Development Environment Setup
 
-This repository contains scripts and configuration files to quickly set up a standard macOS environment for creating YouTube content about AI education for non-programmers.
+This repository contains scripts and configuration files to quickly set up a clean, standard macOS development environment for content creation and demonstrations.
 
 ## Purpose
 
-This setup creates a consistent, "vanilla" environment that represents what typical academic users might have on their machines, perfect for:
+This setup creates a consistent, "vanilla" development environment that represents what typical users might have on their machines, perfect for:
 - Testing tutorials and demonstrations
-- Recording screen content with standard tools
 - Running AI/ML demos locally
+- Development work in a clean environment
 - Ensuring content works for the target audience
 
 ## Quick Start
@@ -35,10 +35,8 @@ This setup creates a consistent, "vanilla" environment that represents what typi
 
 ### Software Stack
 
-- **Video Production**: OBS Studio, Audacity, HandBrake, KeyCastr
-- **Audio Routing**: BlackHole, Loopback
 - **Development**: Visual Studio Code, Ghostty, Git
-- **AI/ML Tools**: Ollama, LM Studio, Miniconda, Python
+- **AI/ML Tools**: Ollama, LM Studio, Python
 - **Security**: Bitwarden (desktop app and CLI)
 - **Utilities**: Rectangle, BetterDisplay, Obsidian
 - **Terminal Enhancements**: Starship, Atuin, FZF, Zoxide, Yazi, ZSH plugins
@@ -49,63 +47,54 @@ This setup creates a consistent, "vanilla" environment that represents what typi
 - `Brewfile` - Homebrew bundle for all applications
 - `settings/` - Standard configurations for common tools
 - `scripts/` - Utility scripts for environment setup
-- `settings/obs/` - Pre-configured OBS templates for YouTube beginners
 
 ## Features
 
-### 🎬 OBS Studio Templates
-- **Pre-configured YouTube scenes**: Screen Recording, Webcam Only, Screen + Webcam, Starting Soon
-- **Optimized profile**: 1080p30, hardware encoding, 6000kbps bitrate
-- **Automatic setup**: Run `./scripts/setup-obs-templates.sh` for instant configuration
-- **Beginner-friendly**: Ready-to-use templates with professional layouts
-
 ### 💻 VS Code Configuration
-- **YouTube-optimized settings**: Monokai theme, larger fonts (13px), vim extension
-- **Automatic extension installation**: Development, productivity, and content creation tools
+
+- **Optimized settings**: Monokai theme, larger fonts (13px), vim extension
+- **Automatic extension installation**: Development and productivity tools
 - **Workspace recommendations**: Extensions automatically suggested in projects
 
 ### 🖥️ macOS Optimization
-- **Auto-hide dock and menu bar**: Maximum screen real estate for recordings
-- **Organized dock layout**: Grouped by function (Content Creation, Development, Productivity)
+
+- **Auto-hide dock and menu bar**: Maximum screen real estate
+- **Organized dock layout**: Grouped by function (Development, Productivity)
 - **Modern terminal**: Starship prompt, Atuin history, FZF fuzzy finder, Zoxide navigation
 
 ### 🛠️ Terminal Enhancements
+
 - **Yazi file manager**: Enhanced `y()` function for directory-aware navigation
 - **Modern aliases**: `eza` for `ls`, `bat` for `cat`, `z` for smart directory jumping
-- **Productivity shortcuts**: Git aliases, YouTube project helpers, development shortcuts
+- **Productivity shortcuts**: Git aliases, development shortcuts
 
 ## Manual Steps After Installation
 
-1. **OBS Studio Configuration**
-   - Templates are automatically installed and configured
-   - Configure your webcam and microphone devices in OBS
-   - Test recording with the "Screen + Webcam" scene
-
-2. **Visual Studio Code**
+1. **Visual Studio Code**
    - Extensions are automatically installed via setup script
-   - Settings are automatically applied for YouTube content creation
+   - Settings are automatically applied for development work
    - Restart VS Code to activate all extensions
 
-3. **Terminal Setup**
+2. **Terminal Setup**
    - Restart terminal or run `source ~/.zshrc` to activate enhancements
    - Use `y` to open Yazi file manager with directory navigation
    - Use `z <partial-name>` for smart directory jumping
 
-4. **Ollama Setup**
+3. **Ollama Setup**
    - Pull commonly used models: `ollama pull llama2`
 
-5. **Bitwarden Setup**
+4. **Bitwarden Setup**
    - Create a Bitwarden account and verify your email
    - Install the browser extension: Open Chromium → Chrome Web Store → Search "Bitwarden Password Manager" → Click "Add to Chrome"
    - Log into the extension using your Bitwarden credentials
 
 ## Testing Checklist
 
-Before recording any tutorial, verify:
+Before using the environment, verify:
 - [ ] All terminal commands work in standard Terminal.app
 - [ ] Python environments activate correctly
 - [ ] AI tools run without specialized configurations
-- [ ] Screen recording captures audio properly
+- [ ] Development tools are properly configured
 
 ## Maintenance
 
@@ -142,23 +131,23 @@ This is ideal for students who want to completely clean their systems after usin
 
 This environment assumes:
 
-- Academic users with basic technical literacy
+- Users with basic technical literacy
 - macOS users who prefer GUI tools when available
-- Interest in AI/ML without programming background
+- Interest in development and AI/ML tools
 - Standard MacBook Air/Pro configurations
 
 ## Contributing
 
-If you discover tools or configurations that better represent the standard academic user environment, please submit a PR or open an issue.
+If you discover tools or configurations that better represent the standard development environment, please submit a PR or open an issue.
 
 ## Recent Updates
 
 ### Latest Changes
 
-- **Auto-hide UI elements**: Dock and menu bar automatically hide for cleaner recordings
+- **Removed video production tools**: Focused on basic development environment
+- **Auto-hide UI elements**: Dock and menu bar automatically hide for cleaner interface
 - **Enhanced Yazi integration**: Improved `y()` function with proper directory navigation
-- **Font size optimization**: VS Code fonts adjusted to 13px for better video readability
-- **OBS templates**: Complete beginner-friendly setup with 4 pre-configured scenes
+- **Font size optimization**: VS Code fonts adjusted to 13px for better readability
 - **VS Code extensions**: Automated installation of productivity and development tools
 - **Dock organization**: Logical grouping of applications by function
 
@@ -166,9 +155,8 @@ If you discover tools or configurations that better represent the standard acade
 
 - `8d70594` - Add auto-hide settings for dock and menu bar
 - `3a2f8e0` - Update VS Code font size for better video visibility
-- `3215109` - Add comprehensive OBS Studio templates for YouTube beginners
 - `1a04452` - Add VS Code extension installation script and integration
-- `1e7700a` - Enhance VS Code configuration for YouTube content creation
+- `1e7700a` - Enhance VS Code configuration for content creation
 - `f1fab0f` - Add comprehensive dock configuration system
 
 ## License

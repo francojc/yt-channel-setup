@@ -1,34 +1,28 @@
-# Brewfile for YouTube AI Education Content Creation
+# Brewfile for Basic Development Environment
 
 # Core Development Tools
-brew "git"
-brew "python@3.11"
-brew "uv"
-brew "node"
-brew "wget"
-brew "curl"
-brew "eza"
+brew "atuin"
 brew "bat"
+brew "curl"
+brew "dockutil"
+brew "eza"
+brew "fzf"
+brew "git"
 brew "glances"
 brew "just"
-brew "zsh-syntax-highlighting"
-brew "zsh-autosuggestions"
+brew "node"
+brew "nvim"
+brew "python@3.11"
 brew "starship"
-brew "atuin"
-brew "fzf"
-brew "zoxide"
+brew "uv"
+brew "wget"
 brew "yazi"
-brew "dockutil"
+brew "zoxide"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
-# Video Production Essentials
-cask "obs"
-cask "audacity"
-cask "handbrake"
+# Essential Utilities
 cask "rectangle"  # Window management
-
-# Audio Tools
-cask "blackhole-2ch"  # Virtual audio driver
-cask "loopback"  # Advanced audio routing
 
 # Development Environment
 cask "visual-studio-code"
@@ -48,7 +42,3 @@ cask "bitwarden"  # Password manager
 
 # Security & Utilities
 brew "bitwarden-cli"  # Password manager CLI
-
-# Screen Recording Helpers
-cask "keycastr"  # Show keyboard shortcuts on screen
-cask "camo-studio"  # Use iPhone as webcam
