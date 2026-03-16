@@ -5,6 +5,7 @@ This repository contains scripts and configuration files to quickly set up a cle
 ## Purpose
 
 This setup creates a consistent, "vanilla" development environment that represents what typical users might have on their machines, perfect for:
+
 - Testing tutorials and demonstrations
 - Running AI/ML demos locally
 - Development work in a clean environment
